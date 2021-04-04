@@ -6,7 +6,7 @@ from sklearn.metrics import mean_absolute_error, confusion_matrix, plot_roc_curv
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
-from sklearn.svm import SVC
+
 
 storedata_filepath = 'D:/02_AI/storedata.csv' # path to file
 data = pd.read_csv(storedata_filepath)
@@ -128,9 +128,7 @@ model.fit(OH_X_train, y_train)
 preds = model.predict(OH_X_valid)
 y_probas = model.predict_proba(OH_X_valid)
 
-svc = SVC(random_state=42)
-svc.fit(OH_X_train, y_train)
-svc_disp = plot_roc_curve(svc, OH_X_valid, y_valid)
+plot_roc_curve(svc, OH_X_valid, y_valid)
 plt.show()
 
 
