@@ -11,13 +11,13 @@ from tensorflow.keras import layers
 from sklearn.metrics import mean_absolute_error, confusion_matrix
 
 # PATH TO FILE
-storedata_filepath = 'D:/02_AI/storedata.csv'
+storedata_filepath = 'D:/02_AI/storedata.csv' # change this
 data = pd.read_csv(storedata_filepath)
 # print(data.describe())
 training_data = data.copy()
 print(training_data.columns)
 
-## II. PREPROCESS DATA
+## II. PREPROCESS DATA AND MODEL
 # Why is staff number of store 2039 equal to -2???
 
 
@@ -111,7 +111,7 @@ def assess_model(X,y, batch_size, epochs_num):
     conf_m = confusion_matrix(y_valid, y_preds)
     return MAE,  conf_m
 
-
+## III. CLASSIFY
 batch_sizes = [50, 60, 70, 80]
 epochs_nums = [50, 100, 150]
 assess_array = []
