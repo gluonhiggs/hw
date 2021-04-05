@@ -127,8 +127,8 @@ model = RandomForestClassifier(n_estimators = range(50,500,50)[tree_num_index], 
 model.fit(OH_X_train, y_train)
 preds = model.predict(OH_X_valid)
 y_probas = model.predict_proba(OH_X_valid)
-
-plot_roc_curve(svc, OH_X_valid, y_valid)
+plot_roc_curve(model, OH_X_valid, y_valid, name='ROC for valid data')
+plot_roc_curve(model, OH_X_test, y_test, name='ROC for test data')
 plt.show()
 
 
