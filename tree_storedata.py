@@ -1,4 +1,4 @@
-
+#I. IMPORT LIBRARIES, PACKAGES
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
@@ -13,7 +13,7 @@ data = pd.read_csv(storedata_filepath)
 # print(data.describe())
 training_data = data.copy()
 
-## PREPROCESS DATA
+## PREPROCESS DATA, MODEL, AND CLASSIFY
 # Why is staff number of store 2039 equal to -2???
 """['Town', 'Country', 'Store ID', 'Manager name', 'Staff', 'Floor Space',
              'Window', 'Car park', 'Demographic score', 'Location',
