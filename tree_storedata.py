@@ -13,7 +13,7 @@ data = pd.read_csv(storedata_filepath)
 # print(data.describe())
 training_data = data.copy()
 
-## II. PREPROCESS DATA
+## PREPROCESS DATA
 # Why is staff number of store 2039 equal to -2???
 """['Town', 'Country', 'Store ID', 'Manager name', 'Staff', 'Floor Space',
              'Window', 'Car park', 'Demographic score', 'Location',
@@ -41,12 +41,12 @@ X = training_data.drop('Performance', axis=1)
 y_test = y
 X_test = X
 
-def split_data(X,y,train_size):
+def split_data(X,y,train_size): # def a split_data function so that we can use it multiple times with different values of train_size
     X_train, X_valid, y_train, y_valid = train_test_split(X, y, train_size=train_size, stratify= y, random_state=2)
     return X_train, y_train, X_valid, y_valid
 
-# function for comparing different approaches
-def assess_model(X_train_input, X_valid_input, y_train_input, y_valid_input, num_estimators):
+
+def assess_model(X_train_input, X_valid_input, y_train_input, y_valid_input, num_estimators): # use this multiple times with different values of num_estimators (trees)
     model = RandomForestClassifier(n_estimators = num_estimators, random_state=1)
     model.fit(X_train_input, y_train_input)
     preds = model.predict(X_valid_input)
@@ -89,6 +89,8 @@ for train_size in train_sizes:
         print('Confusion Matrix:\n')
         print(conf_mat)
         MAE_array.append(MAE)
+        
+# find hyperparameters corresponding to the minimum absolute error
 train_size_index = MAE_array.index(min(MAE_array))//len(range(50,500,50))
 tree_num_index = MAE_array.index(min(MAE_array))%len(range(50,500,50))
 print(MAE_array.index(min(MAE_array)))
