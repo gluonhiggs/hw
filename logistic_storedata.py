@@ -20,7 +20,7 @@ data = pd.read_csv(storedata_filepath)
 training_data = data.copy()
 print(training_data.columns)
 
-## II. PREPROCESS DATA
+## II. PREPROCESS DATA AND MODEL
 # Why is staff number of store 2039 equal to -2???
 
 
@@ -75,7 +75,7 @@ def split_data(features, target, train_data_size):
     return X_train, y_train, X_valid, y_valid
 
 
-def evaluate_model(X_train, y_train, X_valid, y_valid):
+def assess_model(X_train, y_train, X_valid, y_valid):
     model = LogisticRegression(solver='liblinear', random_state=0)
     model.fit(X_train, y_train)
     preds =model.predict(X_valid)
@@ -84,6 +84,7 @@ def evaluate_model(X_train, y_train, X_valid, y_valid):
     preds = np.round(model.predict(X_valid))
     print(confusion_matrix(y_valid,preds))
 train_sizes = [0.5, 0.67, 0.8]
+## III. CLASSIFY
 for train_size in train_sizes:
     X_train, y_train, X_valid, y_valid = split_data(X, y, train_size)
-    evaluate_model(X_train, y_train, X_valid, y_valid)
+    assess_model(X_train, y_train, X_valid, y_valid)
