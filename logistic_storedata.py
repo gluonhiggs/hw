@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 
 
 # PATH TO FILE
-storedata_filepath = 'D:/02_AI/storedata.csv'
+storedata_filepath = 'D:/02_AI/storedata.csv' # change this
 data = pd.read_csv(storedata_filepath)
 # print(data.describe())
 training_data = data.copy()
